@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Application.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">participants1a</a> &gt; <a href="index.source.html" class="el_package">asw</a> &gt; <span class="el_source">Application.java</span></div><h1>Application.java</h1><pre class="source lang-java linenums">package asw;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ComponentScan;
+
+import asw.dbManagement.model.Participant;
+import asw.dbManagement.repository.ParticipantRepository;
+
+import java.text.ParseException;
+
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.Bean;
+
+@EnableAutoConfiguration
+@ComponentScan
+@SpringBootApplication
+<span class="fc" id="L19">public class Application {</span>
+
+	public static void main(String[] args) {
+<span class="nc" id="L22">		SpringApplication.run(Application.class, args);</span>
+<span class="nc" id="L23">	}</span>
+
+	@Bean
+	public CommandLineRunner initDB(ParticipantRepository repository) throws ParseException {
+
+<span class="fc" id="L28">		return (args) -&gt; {</span>
+			// Inserción en la base de datos
+<span class="fc" id="L30">			repository.save(new Participant(&quot;Paco&quot;, &quot;123456&quot;, &quot;paco@hotmail.com&quot;, &quot;12345678A&quot;, &quot;Calle Valdés Salas nº1&quot;,&quot;Persona&quot;,1));</span>
+
+			// Inserción en la base de datos
+<span class="fc" id="L33">			repository.save(new Participant(&quot;Pepe&quot;, &quot;123456&quot;, &quot;pepe@gmail.com&quot;, &quot;87654321B&quot;, &quot;Calle Valdés Salas nº2&quot;,&quot;Persona&quot;,1));</span>
+
+			// Inserción en la base de datos
+<span class="fc" id="L36">			repository.save(new Participant(&quot;Carmen&quot;, &quot;123456&quot;, &quot;carmen@yahoo.com&quot;, &quot;11223344C&quot;, &quot;Calle Valdés Salas nº3&quot;,&quot;Persona&quot;,1));</span>
+
+			// Inserción en la base de datos
+<span class="fc" id="L39">			repository.save(new Participant(&quot;Isabel&quot;, &quot;123456&quot;, &quot;isabel@gmail.com&quot;, &quot;22334455D&quot;, &quot;Calle Valdés Salas nº4&quot;,&quot;Persona&quot;,1));</span>
+
+			// Inserción en la base de datos
+<span class="fc" id="L42">			repository.save(new Participant(&quot;María&quot;, &quot;123456&quot;, &quot;maria@gmail.com&quot;, &quot;33445566E&quot;, &quot;Calle Valdés Salas nº5&quot;,&quot;Persona&quot;,1));</span>
+
+			// Inserción en la base de datos
+<span class="fc" id="L45">			repository.save(new Participant(&quot;Jose&quot;, &quot;123456&quot;, &quot;jose@gmail.com&quot;, &quot;44556677F&quot;, &quot;Calle Valdés Salas nº6&quot;,&quot;Persona&quot;,1));</span>
+
+<span class="fc" id="L47">		};</span>
+	}
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>

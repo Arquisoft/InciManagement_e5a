@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ErrorFactory.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">participants1a</a> &gt; <a href="index.source.html" class="el_package">asw.participants.factory</a> &gt; <span class="el_source">ErrorFactory.java</span></div><h1>ErrorFactory.java</h1><pre class="source lang-java linenums"><span class="pc" id="L1">package asw.participants.factory;</span>
+
+import asw.participants.webService.responses.errors.ErrorResponse;
+import asw.participants.webService.responses.errors.IncorrectPasswordErrorResponse;
+import asw.participants.webService.responses.errors.KindNotFoundResponse;
+import asw.participants.webService.responses.errors.PasswordDoNotMatchErrorResponse;
+import asw.participants.webService.responses.errors.RequiredEmailErrorResponse;
+import asw.participants.webService.responses.errors.RequiredKindErrorResponse;
+import asw.participants.webService.responses.errors.RequiredPasswordErrorResponse;
+import asw.participants.webService.responses.errors.SameEmailErrorResponse;
+import asw.participants.webService.responses.errors.UnknownErrorResponse;
+import asw.participants.webService.responses.errors.UserNotFoundResponse;
+import asw.participants.webService.responses.errors.WrongEmailStyleErrorResponse;
+
+//Creacion de los distintos tipos de error.
+public class ErrorFactory {
+
+<span class="fc" id="L18">	public static enum Errors {</span>
+<span class="fc" id="L19">		INCORRECT_PASSWORD,</span>
+<span class="fc" id="L20">		REQUIRED_EMAIL,</span>
+<span class="fc" id="L21">		REQUIRED_PASSWORD,</span>
+<span class="fc" id="L22">		REQUIRED_KIND,</span>
+<span class="fc" id="L23">		USER_NOT_FOUND,</span>
+<span class="fc" id="L24">		WRONG_EMAIL_STYLE,</span>
+<span class="fc" id="L25">		INCORRECT_PASSWORD_DO_NOT_MATCH,</span>
+<span class="fc" id="L26">		SAME_EMAIL, </span>
+<span class="fc" id="L27">		INCORRECT_KIND</span>
+	}
+
+	// Generar Constructor privado no queremos que se pueda tener varias
+	// instancias de la clase.
+<span class="nc" id="L32">	private ErrorFactory() {</span>
+<span class="nc" id="L33">	}</span>
+
+	public static ErrorResponse getError(Errors error) {
+<span class="pc bpc" id="L36" title="3 of 10 branches missed.">		switch (error) {</span>
+		case INCORRECT_PASSWORD:
+<span class="fc" id="L38">			return new IncorrectPasswordErrorResponse();</span>
+		case REQUIRED_EMAIL:
+<span class="fc" id="L40">			return new RequiredEmailErrorResponse();</span>
+		case REQUIRED_PASSWORD:
+<span class="fc" id="L42">			return new RequiredPasswordErrorResponse();</span>
+		case REQUIRED_KIND:
+<span class="nc" id="L44">			return new RequiredKindErrorResponse();</span>
+		case USER_NOT_FOUND:
+<span class="fc" id="L46">			return new UserNotFoundResponse();</span>
+		case WRONG_EMAIL_STYLE:
+<span class="fc" id="L48">			return new WrongEmailStyleErrorResponse();</span>
+		case INCORRECT_PASSWORD_DO_NOT_MATCH:
+<span class="fc" id="L50">			return new PasswordDoNotMatchErrorResponse();</span>
+		case INCORRECT_KIND:
+<span class="nc" id="L52">			return new KindNotFoundResponse();</span>
+		case SAME_EMAIL:
+<span class="fc" id="L54">			return new SameEmailErrorResponse();</span>
+		default:// en caso de no conocer el error.
+<span class="nc" id="L56">			return new UnknownErrorResponse();</span>
+		}
+	}
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>
