@@ -1,8 +1,10 @@
-package asw.dbManagement.model;
+package asw.dbIncidence.model;
 
 import java.util.List;
 import java.util.Map;
 
+import javax.persistence.CollectionTable;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -19,7 +21,12 @@ public class Incidence {
 	private String user, password, indicenceName, description;
 	//Habría que conseguir de alguna manera la geolocalización
 	
+	@ElementCollection
+	@CollectionTable(name ="tags")
 	private List<String> tags;
+	
+	@ElementCollection
+	@CollectionTable(name ="properties")
 	private Map<String, String> properties;
 	
 	public Incidence(String user, String password, String name, String description) {
