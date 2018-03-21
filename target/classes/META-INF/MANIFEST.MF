@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Implementation-Title: participants1a
+Implementation-Version: 0.0.1
+Built-By: Alvaro
+Implementation-Vendor-Id: es.uniovi.asw
+Build-Jdk: 1.8.0_144
+Implementation-URL: http://projects.spring.io/spring-boot/participants
+ 1a/
+Created-By: Maven Integration for Eclipse
+Implementation-Vendor: Pivotal Software, Inc.
+Main-Class: asw.Application
+
