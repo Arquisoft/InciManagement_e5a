@@ -15,14 +15,13 @@ import javax.persistence.Table;
 @Table(name = "Incidence")
 public class Incidence {
 
-
 	@Id
 	@GeneratedValue
 	private Long id;
 	private String user, password, indicenceName, description;
 	//Habría que conseguir de alguna manera la geolocalización
-	
 	private Date date;
+	private IncidenceStatus status;
 	
 	@ElementCollection
 	@CollectionTable(name ="tags")
@@ -38,7 +37,8 @@ public class Incidence {
 		this.indicenceName = name;
 		this.description = description;
 		this.tags=tags;
-		this.date=new Date();
+		this.date = new Date();
+		this.status = IncidenceStatus.OPENED;
 	}
 
 	Incidence() {
@@ -72,6 +72,14 @@ public class Incidence {
 		return properties;
 	}
 
+	public IncidenceStatus getStatus() {
+		return status;
+	}
+
+	public void setStatus(IncidenceStatus status) {
+		this.status = status;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -102,4 +110,9 @@ public class Incidence {
 		return "Incidence [id=" + id + ", user=" + user + ", password=" + password + ", indicenceName=" + indicenceName
 				+ ", description=" + description + ", tags=" + tags + ", properties=" + properties + "]";
 	}
+
+	public Date getDate() {
+		return date;
+	}
+
 }
