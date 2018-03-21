@@ -9,6 +9,7 @@ import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -20,6 +21,8 @@ public class Incidence {
 	@GeneratedValue
 	private Long id;
 	private String indicenceName, description, identificador;
+	
+	@ManyToOne
 	private Agent agent;
 	
 	private Date date;

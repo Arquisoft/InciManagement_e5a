@@ -38,7 +38,7 @@ public class IncidenceController {
 		if (descripcion.equals("")) 
 		{
 			model.addAttribute("mensajes", "No puedes dejar los campos de texto vacios");
-			return "users/createIncidence";
+			return "createIncidence";
 			
 		} 
 		
@@ -46,27 +46,9 @@ public class IncidenceController {
 		Incidence incidence = incidenceService.saveIncidence(new Incidence(identificador, title, descripcion,
 				(Agent) session.getAttribute("nombre")));
 		sendIncidence.send(incidence.getIdentificador());
-		return "redirect:/index";
+		return "index";
 	}
 	
-	@RequestMapping("/incidence/send/kafka")
-	public String createIncidence(@RequestParam String comment, HttpSession session, Model model) 
-	{
-		if (comment.equals(""))
-		{
-			model.addAttribute("mensaje", "No ha escrito nada");
-		} 
-		
-		else 
-		{
-			String identificador = nextId();
-			Agent a = (Agent) session.getAttribute("usuario");
-			Incidence i = incidenceService.getIncidenceById((Long) session.getAttribute("idIncidence"));
-			sendIncidence.send(i.getIdentificador());
-
-		}
-		return "redirect:/index";
-	}
 	
 	private String nextId() {
 		return new BigInteger(130, random).toString(32);
