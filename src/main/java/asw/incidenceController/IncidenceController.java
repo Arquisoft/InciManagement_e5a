@@ -36,8 +36,8 @@ public class IncidenceController {
 	public String createIncidence(@RequestParam String name, @RequestParam String description,
 			@RequestParam String username, @RequestParam String password, @RequestParam String tags) {
 		Agent agent = getAgentService.getAgent(username);
-		if (agent == null || agent.getPassword().equals(password))
-			return "sendIncidence?error";
+		if (agent == null || !agent.getPassword().equals(password))
+			return "redirect:/sendIncidence?error";
 		Incidence incidence = new Incidence(username, password, name, description, obtainTagsList(tags));
 		incidenceService.addIncidence(incidence);
 		
