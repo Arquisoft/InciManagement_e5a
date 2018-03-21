@@ -99,7 +99,7 @@ public class Incidence {
 
 	@Override
 	public String toString() {
-		return "Incidence [id=" + id + ", user=" + user + ", password=" + password + ", indicenceName=" + indicenceName
-				+ ", description=" + description + ", tags=" + tags + ", properties=" + properties + "]";
+		return "Incidence [id=" + id + "#user=" + user + "#password=" + password + "#indicenceName=" + indicenceName
+				+ "#description=" + description + "#tags=<" + tags + ">," + "#properties=" + properties + "]";
 	}
 }
