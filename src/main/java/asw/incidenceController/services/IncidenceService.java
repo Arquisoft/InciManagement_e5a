@@ -24,4 +24,14 @@ public class IncidenceService {
 		String inci = sender.createMessage(incidence);
 		sender.send(inci);
 	}
+	
+	public Incidence getIncidenceById(Long id)
+	{
+		return incidenceRepository.findOne(id);
+	}
+	
+	public Incidence saveIncidence (Incidence incidence)
+	{
+		return incidenceRepository.save(incidence);
+	}
 }

@@ -19,8 +19,8 @@ public class Incidence {
 	@Id
 	@GeneratedValue
 	private Long id;
-	private String user, password, indicenceName, description;
-	//Habría que conseguir de alguna manera la geolocalización
+	private String indicenceName, description, identificador;
+	private Agent agent;
 	
 	private Date date;
 	
@@ -32,12 +32,11 @@ public class Incidence {
 	@CollectionTable(name ="properties")
 	private Map<String, String> properties;
 	
-	public Incidence(String user, String password, String name, String description, List<String> tags) {
-		this.user = user;
-		this.password = password;
+	public Incidence(String identificador, String name, String description, Agent agent) {
+		
 		this.indicenceName = name;
 		this.description = description;
-		this.tags=tags;
+		this.agent=agent;
 		this.date=new Date();
 	}
 
@@ -46,14 +45,6 @@ public class Incidence {
 
 	public Long getId() {
 		return id;
-	}
-
-	public String getUser() {
-		return user;
-	}
-
-	public String getPassword() {
-		return password;
 	}
 
 	public String getIndicenceName() {
@@ -99,7 +90,15 @@ public class Incidence {
 
 	@Override
 	public String toString() {
-		return "Incidence [id=" + id + "#user=" + user + "#password=" + password + "#indicenceName=" + indicenceName
+		return "Incidence [id=" + id + "#user=" + agent.getNombre() + "#password=" + agent.getPassword() + "#indicenceName=" + indicenceName
 				+ "#description=" + description + "#tags=<" + tags + ">," + "#properties=" + properties + "]";
+	}
+
+	public String getIdentificador() {
+		return identificador;
+	}
+
+	public void setIdentificador(String identificador) {
+		this.identificador = identificador;
 	}
 }
