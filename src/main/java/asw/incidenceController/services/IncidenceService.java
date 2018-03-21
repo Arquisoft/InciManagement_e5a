@@ -21,6 +21,7 @@ public class IncidenceService {
 	}
 	
 	public void sendIncidence(Incidence incidence) {
-		
+		String inci = sender.createMessage(incidence);
+		sender.send(inci);
 	}
 }
