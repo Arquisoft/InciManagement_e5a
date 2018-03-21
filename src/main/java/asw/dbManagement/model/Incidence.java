@@ -37,6 +37,7 @@ public class Incidence {
 	
 	public Incidence(String identificador, String name, String description, Agent agent, List<String> tags) {
 		
+		this.identificador = identificador;
 		this.indicenceName = name;
 		this.description = description;
 		this.tags=tags;
@@ -105,8 +106,8 @@ public class Incidence {
 
 	@Override
 	public String toString() {
-		return "Incidence [id=" + id + "#user=" + agent.getNombre() + "#password=" + agent.getPassword() + "#indicenceName=" + indicenceName
-				+ "#description=" + description + "#tags=<" + tags + ">," + "#properties=" + properties + "]";
+		return "Incidence [id=" + identificador + "#user=" + agent.getNombre() + "#indicenceName=" + indicenceName
+				+ "#description=" + description + "#tags=<" + tags + ">]";
 	}
 
 	public String getIdentificador() {

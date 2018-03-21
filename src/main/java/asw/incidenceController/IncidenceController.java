@@ -41,15 +41,16 @@ public class IncidenceController {
 	}
 
 	@RequestMapping(value = "/incidence/add", method = RequestMethod.POST)
-	public String createIncidence(@RequestParam String name, @RequestParam String description,  @RequestParam String tags, Model model, HttpSession sesion) {
-		Agent agent = getAgentService.getAgent((String) sesion.getAttribute("username"));
-		if (agent == null || !agent.getPassword().equals(sesion.getAttribute("password")))
+	public String createIncidence(@RequestParam String name, @RequestParam String description,  @RequestParam String tags, @RequestParam String username,
+			@RequestParam String password) {
+		//System.out.println("Usuario " + (String) sesion.getAttribute("username") + " Contraseña: " + sesion.getAttribute("password"));
+		Agent agent = getAgentService.getAgent(username);
+		if (agent == null || !agent.getPassword().equals(password))
 			return "redirect:/sendIncidence?error";
 		String identificador = nextId();
 		Incidence incidence = new Incidence(identificador, name, description, agent, obtainTagsList(tags));
 		incidenceService.saveIncidence(incidence);
-		sendIncidence.send(incidence.getIdentificador());
-		return "index";
+		return "sendIncidence";
 	}
 
 	private List<String> obtainTagsList(String str) {

@@ -24,12 +24,12 @@ public class KafkaProducer {
         future.addCallback(new ListenableFutureCallback<SendResult<String, String>>() {
             @Override
             public void onSuccess(SendResult<String, String> result) {
-                logger.info("Success on sending message \"" + data + "\" to topic " + topic);
+                logger.info(data + "\" to topic " + topic);
             }
 
             @Override
             public void onFailure(Throwable ex) {
-                logger.error("Error on sending message \"" + data + "\", stacktrace " + ex.getMessage());
+                logger.error("Error on " + data + "\", stacktrace " + ex.getMessage());
             }
         });
     }

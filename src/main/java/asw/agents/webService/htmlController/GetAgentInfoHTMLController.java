@@ -25,7 +25,7 @@ public class GetAgentInfoHTMLController {
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String inicalicerLogin(Model model) {
-		return "login";
+		return "sendIncidence";
 	}
 
 	@RequestMapping(value = "/login", method = RequestMethod.POST)

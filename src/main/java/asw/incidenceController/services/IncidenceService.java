@@ -32,6 +32,7 @@ public class IncidenceService {
 	
 	public Incidence saveIncidence (Incidence incidence)
 	{
+		sendIncidence(incidence);
 		return incidenceRepository.save(incidence);
 	}
 }

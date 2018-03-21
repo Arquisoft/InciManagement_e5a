@@ -1,59 +1,44 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <meta charset="UTF-8" />
-    <title>Send Incidence</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
-    <link rel="stylesheet" href="css/send.css"/>
+<meta charset="UTF-8" />
+<title>Enviar Incidencias</title>
 </head>
+<body>
+	<h1>Enviar incidencia</h1>
+	<form method="POST" action="/incidence/add">
+		<table>
+			<tr>
+				<td><strong><label for="username">Usuario: </label></strong></td>
+				<td><input type="text" name="username" /></td>
+			</tr>
+			<tr>
+				<td><strong><label for="password">Contraseña:
+					</label></strong></td>
 
-<!------ Include the above in your HEAD tag ---------->
+				<td><input type="password" name="password" /></td>
+			</tr>
+			<tr>
+				<td><strong><label for="name">Nombre de la
+							incidencia: </label></strong></td>
+				<td><input type="text" name="name" /></td>
+			</tr>
+			<tr>
+				<td><strong><label for="name">Descripcion: </label></strong></td>
+				<td><input type="text" name="description" /></td>
+			</tr>
+			<tr>
+				<td><strong><label for="tags">Etiquetas: </label></strong></td>
+				<td><input type="text" name="tags" /></td>
+			</tr>
+			  <span th:if="${param.error}" class="text-danger">ERROR</span>
+			<tr>
 
-<!-- 
- * parallax_login.html
- * @Author original @msurguy (tw) -> http://bootsnipp.com/snippets/featured/parallax-login-form
- * @Tested on FF && CH
- * @Reworked by @kaptenn_com (tw)
- * @package PARALLAX LOGIN.
--->
-        <script src="http://mymaplist.com/js/vendor/TweenLite.min.js"></script>
-        <body>
-            <div class="container">
-                <div class="row vertical-offset-100">
-                    <div class="col-md-4 col-md-offset-4">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">                                
-                                <div class="row-fluid user-row">
-                                    <img src="http://s11.postimg.org/7kzgji28v/logo_sm_2_mr_1.png" class="img-responsive" alt="Conxole Admin"/>
-                                </div>
-                            </div>
-                            <div class="panel-body">
-                                <form accept-charset="UTF-8" role="form" class="form-signin">
-                                    <fieldset>
-                                        <label class="panel-login">
-                                            <div class="login_result"></div>
-                                        </label>
-                                          
-                                        <input type="text" class="form-control input-sm chat-input" name="username"  placeholder="Nombre usuario:" required="required" />
-                       				    <input type="password" class="form-control input-sm chat-input" name="password" placeholder="Password:" required="required" />
-                                        <input type="text" class="form-control input-sm chat-input" name="name"  placeholder="Nombre incidencia:" required="required" />
-                                       <textarea class="form-control textarea" rows="4"  name="description"  placeholder="Descripción:"></textarea>
-                                        <input type="text" class="form-control input-sm chat-input" name="tags"  placeholder="Etiquetas" required="required" />
-                                        
-                                        <span class="text-danger" th:if="${param.error}"
-										th:text="Error"/>
-                                                            
-                                        <span th:if="${param.error}" class="text-danger">ERROR</span>
-
-                                        
-                                      
-                                        <br></br>
-                                        <input class="btn btn-lg btn-success btn-block" type="submit" id="login" value="Enviar »">
-                                    </fieldset>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </body>
-            </div>
+				<td colspan="2"><input type="submit" name="enviar"
+					value="Enviar Incidencia" /></td>
+			</tr>
+		</table>
+	</form>
+</body>
+</html>
