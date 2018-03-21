@@ -1,11 +1,16 @@
 package asw.incidenceController;
 
+import java.math.BigInteger;
+import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -14,6 +19,7 @@ import asw.dbManagement.GetAgent;
 import asw.dbManagement.model.Agent;
 import asw.dbManagement.model.Incidence;
 import asw.incidenceController.services.IncidenceService;
+import asw.kafkamanager.SendIncidenceImpl;
 
 @Controller
 public class IncidenceController {
@@ -21,29 +27,31 @@ public class IncidenceController {
 	@Autowired
 	private IncidenceService incidenceService;
 
-	//@Autowired
-	//private KafkaService kafkaService;
+	@Autowired
+	private SendIncidenceImpl sendIncidence;
 
 	@Autowired
 	private GetAgent getAgentService;
 	
+	private SecureRandom random = new SecureRandom();
+
 	@RequestMapping(value = "/sendIncidence", method = RequestMethod.GET)
 	public String createIncidenceGet() {
 		return "sendIncidence";
 	}
 
 	@RequestMapping(value = "/incidence/add", method = RequestMethod.POST)
-	public String createIncidence(@RequestParam String name, @RequestParam String description,
-			@RequestParam String username, @RequestParam String password, @RequestParam String tags) {
-		Agent agent = getAgentService.getAgent(username);
-		if (agent == null || !agent.getPassword().equals(password))
+	public String createIncidence(@RequestParam String name, @RequestParam String description,  @RequestParam String tags, Model model, HttpSession sesion) {
+		Agent agent = getAgentService.getAgent((String) sesion.getAttribute("username"));
+		if (agent == null || !agent.getPassword().equals(sesion.getAttribute("password")))
 			return "redirect:/sendIncidence?error";
-		Incidence incidence = new Incidence(username, password, name, description, obtainTagsList(tags));
-		incidenceService.addIncidence(incidence);
-		
-		return "sendIncidence";
+		String identificador = nextId();
+		Incidence incidence = new Incidence(identificador, name, description, agent, obtainTagsList(tags));
+		incidenceService.saveIncidence(incidence);
+		sendIncidence.send(incidence.getIdentificador());
+		return "index";
 	}
-	
+
 	private List<String> obtainTagsList(String str) {
 		List<String> etiquetas = new ArrayList<>();
 		Arrays.asList(str.split(",")).forEach(x -> {
@@ -51,5 +59,9 @@ public class IncidenceController {
 			etiquetas.add(x.toLowerCase());
 		});
 		return etiquetas;
+	}
+
+	private String nextId() {
+		return new BigInteger(130, random).toString(32);
 	}
 }

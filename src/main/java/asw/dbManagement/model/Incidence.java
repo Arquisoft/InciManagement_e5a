@@ -9,6 +9,7 @@ import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -18,8 +19,11 @@ public class Incidence {
 	@Id
 	@GeneratedValue
 	private Long id;
-	private String user, password, indicenceName, description;
-	//Habría que conseguir de alguna manera la geolocalización
+	private String indicenceName, description,identificador;
+	
+	@ManyToOne
+	private Agent agent;
+
 	private Date date;
 	private IncidenceStatus status;
 	
@@ -31,14 +35,16 @@ public class Incidence {
 	@CollectionTable(name ="properties")
 	private Map<String, String> properties;
 	
-	public Incidence(String user, String password, String name, String description, List<String> tags) {
-		this.user = user;
-		this.password = password;
+	public Incidence(String identificador, String name, String description, Agent agent, List<String> tags) {
+		
 		this.indicenceName = name;
 		this.description = description;
 		this.tags=tags;
 		this.date = new Date();
 		this.status = IncidenceStatus.OPENED;
+		this.agent=agent;
+		this.date=new Date();
+		this.tags = tags;
 	}
 
 	Incidence() {
@@ -46,14 +52,6 @@ public class Incidence {
 
 	public Long getId() {
 		return id;
-	}
-
-	public String getUser() {
-		return user;
-	}
-
-	public String getPassword() {
-		return password;
 	}
 
 	public String getIndicenceName() {
@@ -107,8 +105,16 @@ public class Incidence {
 
 	@Override
 	public String toString() {
-		return "Incidence [id=" + id + ", user=" + user + ", password=" + password + ", indicenceName=" + indicenceName
-				+ ", description=" + description + ", tags=" + tags + ", properties=" + properties + "]";
+		return "Incidence [id=" + id + "#user=" + agent.getNombre() + "#password=" + agent.getPassword() + "#indicenceName=" + indicenceName
+				+ "#description=" + description + "#tags=<" + tags + ">," + "#properties=" + properties + "]";
+	}
+
+	public String getIdentificador() {
+		return identificador;
+	}
+
+	public void setIdentificador(String identificador) {
+		this.identificador = identificador;
 	}
 
 	public Date getDate() {

@@ -1,9 +1,12 @@
 package asw.dbManagement.model;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -25,6 +28,10 @@ public class Agent {
 	private String kind;
 	private int kindCode;
 	
+	@OneToMany(mappedBy="agent")
+	private List<Incidence> listaIncidencias;
+	
+
 
 	/**
 	 * Constructor vacío (ya que es para mapear)
@@ -113,6 +120,14 @@ public class Agent {
 
 	public void setIdentificador(String identificador) {
 		this.identificador = identificador;
+	}
+	
+	public List<Incidence> getListaIncidencias() {
+		return listaIncidencias;
+	}
+
+	public void setListaIncidencias(List<Incidence> listaIncidencias) {
+		this.listaIncidencias = listaIncidencias;
 	}
 
 	@Override
