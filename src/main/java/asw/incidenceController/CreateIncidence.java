@@ -1,6 +1,6 @@
 package asw.incidenceController;
 
-import asw.dbIncidence.model.Incidence;
+import asw.dbManagement.model.Incidence;
 
 public interface CreateIncidence {
 
