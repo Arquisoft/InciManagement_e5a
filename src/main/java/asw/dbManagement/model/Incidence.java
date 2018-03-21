@@ -1,5 +1,6 @@
-package asw.dbIncidence.model;
+package asw.dbManagement.model;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -21,6 +22,8 @@ public class Incidence {
 	private String user, password, indicenceName, description;
 	//Habría que conseguir de alguna manera la geolocalización
 	
+	private Date date;
+	
 	@ElementCollection
 	@CollectionTable(name ="tags")
 	private List<String> tags;
@@ -29,11 +32,13 @@ public class Incidence {
 	@CollectionTable(name ="properties")
 	private Map<String, String> properties;
 	
-	public Incidence(String user, String password, String name, String description) {
+	public Incidence(String user, String password, String name, String description, List<String> tags) {
 		this.user = user;
 		this.password = password;
 		this.indicenceName = name;
 		this.description = description;
+		this.tags=tags;
+		this.date=new Date();
 	}
 
 	Incidence() {
