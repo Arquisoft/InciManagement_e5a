@@ -32,13 +32,15 @@ Como ejecutar:
  
    Usuarios
  
-     alvaro@uniovi.es Contra 
+     Usuario: alvaro@uniovi.es Contraseña: Contra 
  
-     guille@uniovi.es Contra 
+     Usuario: guille@uniovi.es Contraseña: Contra 
  
-     miguel@uniovi.es Contra
+     Usuario: miguel@uniovi.es Contraseña: Contra
  
-     jesus@uniovi.es Contra
+     Usuario: jesus@uniovi.es Contraseña: Contra
  
  8-Rellenar los datos de la incidencia
+ 
+ 9-Enviar los datos de la incidencia
   
