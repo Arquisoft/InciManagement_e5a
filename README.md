@@ -25,3 +25,20 @@ Como ejecutar:
  4-Descargar base de datos https://sourceforge.net/projects/hsqldb/files/ y arrancarla.
  
  5-Ejecutar desde eclipse la clase Application
+
+ 6-Conectarse a http://localhost:8090/
+ 
+ 7-Introducir datos de usuario:
+ 
+ /tUsuarios
+ 
+ /t /t alvaro@uniovi.es Contra 
+ 
+ /t /t guille@uniovi.es Contra 
+ 
+ /t /t miguel@uniovi.es Contra
+ 
+ /t /t jesus@uniovi.es Contra
+ 
+ 8-Rellenar los datos de la incidencia
+  
