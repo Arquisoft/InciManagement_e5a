@@ -1,6 +1,8 @@
 # InciManagement_e5a
 InciManagement
 
+[![Build Status](https://travis-ci.org/Arquisoft/InciManager_e5a.svg?branch=master)](https://travis-ci.org/Arquisoft/InciManager_e5a)
+
 AUTORES:
 
 Alvaro Manuel Camporrox Ayala (UO251562)
