@@ -30,15 +30,15 @@ Como ejecutar:
  
  7-Introducir datos de usuario:
  
- /tUsuarios
+   Usuarios
  
- /t /t alvaro@uniovi.es Contra 
+     alvaro@uniovi.es Contra 
  
- /t /t guille@uniovi.es Contra 
+     guille@uniovi.es Contra 
  
- /t /t miguel@uniovi.es Contra
+     miguel@uniovi.es Contra
  
- /t /t jesus@uniovi.es Contra
+     jesus@uniovi.es Contra
  
  8-Rellenar los datos de la incidencia
   
