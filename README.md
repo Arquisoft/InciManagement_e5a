@@ -22,6 +22,6 @@ Como ejecutar:
  
  3-Lanzar Apache Kafka bin\windows\kafka-server-start.bat config\server.properties
  
- 4-Arrancar base de datos
+ 4-Descargar base de datos https://sourceforge.net/projects/hsqldb/files/ y arrancarla.
  
  5-Ejecutar desde eclipse la clase Application
